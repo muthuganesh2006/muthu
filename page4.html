@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Forever Us 💖</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(-45deg,#ffdee9,#b5fffc,#ffd6e8,#c2e9fb);
+  background-size:400% 400%;
+  animation:bg 12s infinite;
+  font-family:Poppins,sans-serif;
+  overflow:hidden;
+  padding:15px;
+}
+
+@keyframes bg{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.card{
+  width:100%;
+  max-width:320px;
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:blur(10px);
+  padding:22px 18px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
+  animation:fade 1s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(30px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+h1{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+p{
+  font-size:14px;
+  line-height:1.6;
+  margin-bottom:10px;
+}
+
+button{
+  margin-top:15px;
+  padding:10px 25px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  font-size:14px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:active{
+  transform:scale(0.95);
+}
+
+.confetti{
+  position:fixed;
+  top:-10px;
+  font-size:18px;
+  animation:fall linear infinite;
+}
+
+@keyframes fall{
+  to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* Extra small screen support */
+@media (max-width:360px){
+  h1{font-size:18px;}
+  p{font-size:13px;}
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="love.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+  <h1>Forever Starts Here 💍</h1>
+  <p>
+    Simple-aa irundhaalum<br>
+    Honest-aa irukkum ❤️<br>
+    Namma story slow-aa, sweet-aa… always 💖
+  </p>
+  <button onclick="showPromise()">Promise 🤞</button>
+</div>
+
+<script>
+function showPromise(){
+  alert("I promise ❤️");
+}
+
+setInterval(()=>{
+  const c = document.createElement("div");
+  c.className = "confetti";
+  c.innerHTML = "💖";
+  c.style.left = Math.random()*100 + "vw";
+  c.style.animationDuration = (3 + Math.random()*3) + "s";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),6000);
+},400);
+</script>
+
+</body>
+</html>

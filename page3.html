@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<title>A Small Gift 🎁</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:15px;
+  background:linear-gradient(-45deg,#ffdee9,#b5fffc,#ffd6e8,#c2e9fb);
+  background-size:400% 400%;
+  animation:bg 12s infinite;
+  overflow:hidden;
+}
+
+/* background animation */
+@keyframes bg{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* card */
+.card{
+  width:100%;
+  max-width:360px;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(14px);
+  border-radius:24px;
+  padding:25px 20px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,0.18);
+}
+
+/* gift */
+.gift{
+  font-size:90px;
+  cursor:pointer;
+  user-select:none;
+  animation:bounce 1.2s infinite;
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-18px);}
+}
+
+.opened{
+  animation:none;
+}
+
+/* hearts */
+.heart{
+  position:fixed;
+  bottom:-10px;
+  font-size:22px;
+  pointer-events:none;
+  animation:fly linear forwards;
+}
+
+@keyframes fly{
+  to{
+    transform:translateY(-120vh) scale(1.6);
+    opacity:0;
+  }
+}
+
+/* text */
+h1{
+  font-size:22px;
+  margin:15px 0 10px;
+}
+
+p{
+  font-size:15px;
+  line-height:1.6;
+  min-height:45px;
+}
+
+/* button */
+button{
+  margin-top:20px;
+  padding:14px 36px;
+  border:none;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:#fff;
+  font-size:16px;
+  font-weight:500;
+  display:none;
+  width:100%;
+  max-width:220px;
+}
+
+/* extra small phones */
+@media(max-width:360px){
+  .gift{font-size:75px;}
+  h1{font-size:20px;}
+  p{font-size:14px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div id="gift" class="gift">🎁</div>
+  <h1 id="title">A Small Gift for You</h1>
+  <p id="msg">Tap the gift 😍</p>
+  <button id="next" onclick="goNext()">Continue ❤️</button>
+</div>
+
+<script>
+const gift = document.getElementById("gift");
+const msg = document.getElementById("msg");
+const title = document.getElementById("title");
+const nextBtn = document.getElementById("next");
+
+gift.addEventListener("click", ()=>{
+  gift.innerHTML = "💖";
+  gift.classList.add("opened");
+
+  title.innerText = "Surprise 🎉";
+  msg.innerHTML = "You are my favourite gift ❤️<br>Today… Tomorrow… Always ♾️";
+
+  nextBtn.style.display = "inline-block";
+
+  for(let i=0;i<20;i++){
+    createHeart();
+  }
+
+  if(navigator.vibrate){
+    navigator.vibrate([80,40,80]);
+  }
+});
+
+function createHeart(){
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "💖";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.animationDuration = (2 + Math.random()*2) + "s";
+  document.body.appendChild(h);
+
+  setTimeout(()=>h.remove(),4000);
+}
+
+function goNext(){
+  window.location.href = "page4.html";
+}
+</script>
+
+</body>
+</html>
